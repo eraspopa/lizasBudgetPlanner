@@ -10,51 +10,58 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>Create a new Record by entering the Record name, Subcategory, and Category.</h4>
-        <hr />
-        <div class="form-group">
-            @Html.LabelFor(model => model.RecordId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RecordId, new { htmlAttributes = new { @class = "form-control", @readonly="readonly" } })
-                @Html.ValidationMessageFor(model => model.RecordId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.RecordValue, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RecordValue, new { htmlAttributes = new { @class = "form-control", @autofocus = "autofocus" } })
-                @Html.ValidationMessageFor(model => model.RecordId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(x => Model.SelectedSubcategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                @Html.DropDownListFor(x => Model.SelectedSubcategoryId, new SelectList(Model.Subcategories, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Subcategory"})
-                @Html.ValidationMessageFor(x => x.SelectedSubcategoryId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(x => Model.SelectedCategoryCode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                @Html.DropDownListFor(x => Model.SelectedCategoryCode, new SelectList(Model.Categories, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "Category" })
-                @Html.ValidationMessageFor(x => x.SelectedCategoryCode, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(x => Model.SelectedPeriodCode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                @Html.DropDownListFor(x => Model.SelectedPeriodCode, new SelectList(Model.Periods, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "period" })
-                @Html.ValidationMessageFor(x => x.SelectedPeriodCode, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+<div class="form-horizontal">
+    <h4>Create a new Record by entering the Record name, Subcategory, and Category.</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.RecordId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.RecordId, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.RecordId, "", new { @class = "text-danger" })
         </div>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.RecordValue, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.RecordValue, new { htmlAttributes = new { @class = "form-control", @autofocus = "autofocus" } })
+            @Html.ValidationMessageFor(model => model.RecordId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => Model.SelectedExpenseTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.DropDownListFor(x => Model.SelectedExpenseTypeId, new SelectList(Model.ExpenseTypes, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Type" })
+            @Html.ValidationMessageFor(x => x.SelectedExpenseTypeId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => Model.SelectedSubcategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.DropDownListFor(x => Model.SelectedSubcategoryId, new SelectList(Model.Subcategories, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Subcategory" })
+            @Html.ValidationMessageFor(x => x.SelectedSubcategoryId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => Model.SelectedCategoryCode, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.DropDownListFor(x => Model.SelectedCategoryCode, new SelectList(Model.Categories, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "Category" })
+            @Html.ValidationMessageFor(x => x.SelectedCategoryCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => Model.SelectedPeriodCode, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-5">
+            @Html.DropDownListFor(x => Model.SelectedPeriodCode, new SelectList(Model.Periods, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "period" })
+            @Html.ValidationMessageFor(x => x.SelectedPeriodCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
 }
 
 <div>
@@ -63,7 +70,29 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript">
+<script type="text/javascript">
+        $('#Type').change(function () {
+            var selectedType = $("#Type").val();
+            var subcategoriesSelect = $('#Subcategory');
+            subcategoriesSelect.empty();
+            if (selectedType != null && selectedType != '') {
+                $.getJSON('@Url.Action("GetSubcategories")', { TypeCode: selectedType }, function (subcategories) {
+                    if (subcategories != null && !jQuery.isEmptyObject(subcategories))
+                    {
+                        subcategoriesSelect.append($('<option/>', {
+                            value: null,
+                            text: ""
+                        }));
+                        $.each(subcategories, function (index, subcategory) {
+                            subcategoriesSelect.append($('<option/>', {
+                                value: subcategory.Value,
+                                text: subcategory.Text
+                            }));
+                        });
+                    };
+                });
+            }
+        });
         $('#Subcategory').change(function () {
             var selectedSubcategory = $("#Subcategory").val();
             var CategoriesSelect = $('#Category');
@@ -86,5 +115,5 @@
                 });
             }
         });
-    </script>
+</script>
 }

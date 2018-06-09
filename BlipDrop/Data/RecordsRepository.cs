@@ -15,6 +15,7 @@ namespace BlipDrop.Data
             {
                 List<Record> records = new List<Record>();
                 records = context.Records.AsNoTracking()
+                    .Include(x=>x.ExpenseType)
                     .Include(x => x.Subcategory)
                     .Include(x => x.Category)
                     .Include(x=>x.Period)
@@ -29,6 +30,7 @@ namespace BlipDrop.Data
                         {
                            RecordId = x.RecordId,
                            RecordValue = x.RecordValue,
+                           ExpenseType = x.ExpenseType.ExpenseNameEnglish,
                            Subcategory = x.Subcategory.SubcategoryNameEnglish,
                            Category = x.Category.CategoryNameEnglish,
                            Period = x.Period.PeriodNameEnglish
@@ -45,12 +47,15 @@ namespace BlipDrop.Data
 
         public RecordEditViewModel CreateRecord()
         {
+
+            var eRepo = new ExpenseTypeRepository();
             var sRepo = new SubcategoryRepository();
             var cRepo = new CategoriesRepository();
             var pRepo = new PeriodsRepository();
             var record = new RecordEditViewModel()
             {
                 RecordId = Guid.NewGuid().ToString(),
+                ExpenseTypes = eRepo.GetExpenseTypes(),
                 Subcategories = sRepo.GetSubcategories(),
                 Categories = cRepo.GetCategories(),
                 Periods = pRepo.GetPeriods()
@@ -70,10 +75,12 @@ namespace BlipDrop.Data
                         {
                             RecordId = newGuid,
                             RecordValue = recordEdit.RecordValue,
+                            ExpenseId = recordEdit.SelectedExpenseTypeId,
                             SubcategoryId = recordEdit.SelectedSubcategoryId,
                             CategoryId = recordEdit.SelectedCategoryCode,
                             PeriodId = recordEdit.SelectedPeriodCode
                         };
+                        record.ExpenseType = context.ExpenseTypes.Find(recordEdit.SelectedExpenseTypeId);
                         record.Subcategory = context.Subcategories.Find(recordEdit.SelectedSubcategoryId);
                         record.Category = context.Categories.Find(recordEdit.SelectedCategoryCode);
                         record.Period = context.Periods.Find(recordEdit.SelectedPeriodCode);

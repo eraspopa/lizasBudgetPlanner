@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -26,6 +27,26 @@ namespace BlipDrop.Data
                 subcategories.Insert(0, subcategoryTip);
                 return new SelectList(subcategories, "Value", "Text");
             }
+        }
+        public IEnumerable<SelectListItem> GetSubcategories(string typeCode)
+        {
+            if (!String.IsNullOrWhiteSpace(typeCode))
+            {
+                using (var context = new ApplicationDbContext())
+                {
+                    IEnumerable<SelectListItem> categories = context.Subcategories.AsNoTracking()
+                        .OrderBy(n => n.SubcategoryNameEnglish)
+                        .Where(n => n.ExpenseTypeName == typeCode)
+                        .Select(n =>
+                            new SelectListItem
+                            {
+                                Value = n.SubcategoryId,
+                                Text = n.SubcategoryNameEnglish
+                            }).ToList();
+                    return new SelectList(categories, "Value", "Text");
+                }
+            }
+            return null;
         }
     }
 }

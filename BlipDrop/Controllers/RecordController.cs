@@ -29,6 +29,18 @@ namespace BlipDrop.Controllers
             return null;
         }
 
+        [HttpGet]
+        public ActionResult GetSubcategories(string typeCode)
+        {
+            if (!string.IsNullOrWhiteSpace(typeCode))
+            {
+                var repo = new SubcategoryRepository();
+
+                IEnumerable<SelectListItem> subCategories = repo.GetSubcategories(typeCode);
+                return Json(subCategories, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
 
         // GET: Customer/Details/5
         public ActionResult Details(int id)
@@ -46,7 +58,7 @@ namespace BlipDrop.Controllers
 
         // POST: Customer/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "RecordId, RecordValue, SelectedSubcategoryId, SelectedCategoryCode, SelectedPeriodCode")] RecordEditViewModel model)
+        public ActionResult Create([Bind(Include = "RecordId, RecordValue, SelectedExpenseTypeId, SelectedSubcategoryId, SelectedCategoryCode, SelectedPeriodCode")] RecordEditViewModel model)
         {
             try
             {

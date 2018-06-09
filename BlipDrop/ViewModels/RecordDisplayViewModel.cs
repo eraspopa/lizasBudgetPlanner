@@ -10,6 +10,8 @@ namespace BlipDrop.ViewModels
 
         [Display(Name = "Value")]
         public decimal RecordValue { get; set; }
+        [Display(Name = "Type")]
+        public string ExpenseType { get; set; }
 
         [Display(Name = "Subcategory")]
         public string Subcategory { get; set; }

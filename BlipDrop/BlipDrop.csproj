@@ -150,6 +150,7 @@
     <Compile Include="Controllers\RecordController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data\PeriodsRepository.cs" />
+    <Compile Include="Data\ExpenseTypeRepository.cs" />
     <Compile Include="Data\SubcategoryRepository.cs" />
     <Compile Include="Data\RecordsRepository.cs" />
     <Compile Include="Data\DataContext.cs" />
@@ -157,15 +158,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806091307288_test.cs" />
-    <Compile Include="Migrations\201806091307288_test.Designer.cs">
-      <DependentUpon>201806091307288_test.cs</DependentUpon>
+    <Compile Include="Migrations\201806091453543_test.cs" />
+    <Compile Include="Migrations\201806091453543_test.Designer.cs">
+      <DependentUpon>201806091453543_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Period.cs" />
     <Compile Include="Models\Subcategory.cs" />
     <Compile Include="Models\Record.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ExpenseType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\RecordDisplayViewModel.cs" />
     <Compile Include="ViewModels\RecordEditViewModel.cs" />
@@ -239,8 +241,8 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806091307288_test.resx">
-      <DependentUpon>201806091307288_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806091453543_test.resx">
+      <DependentUpon>201806091453543_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
