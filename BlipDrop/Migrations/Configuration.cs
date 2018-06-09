@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace BlipDrop.Migrations
 {
     using System;
@@ -25,16 +27,19 @@ namespace BlipDrop.Migrations
             {
                 new Subcategory {
                     SubcategoryId = "1",
+                    ExpenseTypeName = "1",
                     SubcategoryNameEnglish = "Pay"
                 },
                 new Subcategory
                 {
                     SubcategoryId = "2",
+                    ExpenseTypeName = "1",
                     SubcategoryNameEnglish = "Benefits"
                 },
                 new Subcategory
                 {
                     SubcategoryId = "3",
+                    ExpenseTypeName = "1",
                     SubcategoryNameEnglish = "Other income"
                 }
             };
@@ -99,6 +104,21 @@ namespace BlipDrop.Migrations
                 },
             };
             periods.ForEach(s => context.Periods.AddOrUpdate(p => p.PeriodId, s));
+            context.SaveChanges();
+            var types = new List<ExpenseType>
+            {
+                new ExpenseType()
+                {
+                    ExpenseId = "1",
+                    ExpenseNameEnglish = "Income"
+                },
+                new ExpenseType()
+                {
+                    ExpenseId = "2",
+                    ExpenseNameEnglish = "Outcome"
+                }
+            };
+            types.ForEach(s => context.ExpenseTypes.AddOrUpdate(p => p.ExpenseId, s));
             context.SaveChanges();
         }
     }

@@ -7,7 +7,7 @@ namespace BlipDrop.Models
     {
         [Key]
        public string SubcategoryId { get; set; }
-
+        public string ExpenseTypeName { get; set; }
         [Required]
         [MaxLength(50)]
         public string SubcategoryNameEnglish { get; set; }

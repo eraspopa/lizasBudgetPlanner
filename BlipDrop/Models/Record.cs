@@ -13,7 +13,8 @@ namespace BlipDrop.Models
 
         [Required]
         public decimal RecordValue { get; set; }
-
+        [Required]
+        public string ExpenseId { get; set; }
         [Required]
         public string SubcategoryId { get; set; }
 
@@ -25,6 +26,7 @@ namespace BlipDrop.Models
         public virtual Subcategory Subcategory { get; set; }
 
         public virtual Category Category { get; set; }
+        public virtual ExpenseType ExpenseType { get; set; }
         public virtual Period Period { get; set; }
     }
 }
